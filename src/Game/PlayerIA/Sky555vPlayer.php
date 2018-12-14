@@ -41,6 +41,10 @@ class Sky555vPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
+        //The dream team
+        $dream_team = array('PacoTheGreat', 'Felixdupriez', 'Shiinsekai', 'GHope', 'Christaupher', 'Benli06', 'Galtar95', 'Etienneelg');
+        $name = $this->result->getStatsFor($this->opponentSide)['name'];
+
         //Get the result of all my choice
         $myChoice = $this->result->getChoicesFor($this->mySide);
 
@@ -56,7 +60,9 @@ class Sky555vPlayer extends Player
         //If it is the first round I play foe
         //else if it is the second round I play friend
         //else I see if the opponent play the opposite of me or the same as me
-        if (sizeof($myChoice) === 0) {
+        if (in_array($name, $dream_team)) {
+            return parent::friendChoice();
+        } else if (sizeof($myChoice) === 0) {
             return parent::friendChoice();
         } else if (sizeof($myChoice) === 1) {
             return parent::foeChoice();
