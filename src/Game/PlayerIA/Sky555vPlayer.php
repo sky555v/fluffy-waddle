@@ -41,15 +41,24 @@ class Sky555vPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        //$this->prettyDisplay();
-        //$this->result->getStats().$this->prettyDisplay();
-        //array ();
+        //Get the result of all my choice
         $myChoice = $this->result->getChoicesFor($this->mySide);
+
+        //Get the result of all the opponent choice
         $opponentChoice = $this->result->getChoicesFor($this->opponentSide);
 
+        //Variable to save the number of time opponent play not like me
         $opposite = 0;
+
+        //Variable to save the number of time opponent play not like me
         $equal = 0;
-        if (sizeof($myChoice) === 0 || sizeof($myChoice) === 1) {
+
+        //If it is the first round I play foe
+        //else if it is the second round I play friend
+        //else I see if the opponent play the opposite of me or the same as me
+        if (sizeof($myChoice) === 0) {
+            return parent::friendChoice();
+        } else if (sizeof($myChoice) === 1) {
             return parent::foeChoice();
         } else {
             for ($i = 0; $i < sizeof($myChoice) - 1; $i++) {
