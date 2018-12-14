@@ -65,7 +65,7 @@ class Sky555vPlayer extends Player
         } else if (sizeof($myChoice) === 0) {
             return parent::friendChoice();
         } else if (sizeof($myChoice) === 1) {
-            return parent::foeChoice();
+            return parent::friendChoice();
         } else {
             for ($i = 0; $i < sizeof($myChoice) - 1; $i++) {
                 if ($myChoice[$i] != $opponentChoice[$i+1]) {
