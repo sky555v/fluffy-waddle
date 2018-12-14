@@ -48,10 +48,10 @@ class Sky555vPlayer extends Player
         $opponentChoice = $this->result->getChoicesFor($this->opponentSide);
 
         //Variable to save the number of time opponent play not like me
-        $opposite = 0;
+        $playOpposite = 0;
 
         //Variable to save the number of time opponent play not like me
-        $equal = 0;
+        $playEqual = 0;
 
         //If it is the first round I play foe
         //else if it is the second round I play friend
@@ -63,12 +63,12 @@ class Sky555vPlayer extends Player
         } else {
             for ($i = 0; $i < sizeof($myChoice) - 1; $i++) {
                 if ($myChoice[$i] != $opponentChoice[$i+1]) {
-                    $opposite = $opposite + 1;
+                    $playOpposite = $playOpposite + 1;
                 } else {
-                    $equal = $equal + 1;
+                    $playEqual = $playEqual + 1;
                 }
             }
-            if ($opposite >= $equal) {
+            if ($playOpposite > $playEqual) {
                 if ($this->result->getLastChoiceFor($this->mySide) === parent::foeChoice()) {
                     return parent::friendChoice();
                 } else {
