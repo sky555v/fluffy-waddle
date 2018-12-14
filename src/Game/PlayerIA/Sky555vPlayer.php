@@ -42,10 +42,41 @@ class Sky555vPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
 
         //$this->prettyDisplay();
-        $this->result->getStats().$this->prettyDisplay();
-        $lastOpponent = $this->result->getLastChoiceFor($this->opponentSide);
-        $lastMy = $this->result->getLastChoiceFor($this->mySide);
-        return parent::foeChoice();
+        //$this->result->getStats().$this->prettyDisplay();
+        //array ();
+        $myChoice = $this->result->getChoicesFor($this->mySide);
+        $opponentChoice = $this->result->getChoicesFor($this->opponentSide);
+
+        $opposite = 0;
+        $equal = 0;
+        if (sizeof($myChoice) === 0 || sizeof($myChoice) === 1) {
+            return parent::friendChoice();
+        } /*else if (sizeof($myChoice) === 1) {
+            return parent::foeChoice();
+        }*/ else {
+            for ($i = 0; $i < sizeof($myChoice) - 1; $i++) {
+                if ($myChoice[$i] != $opponentChoice[$i+1]) {
+                    $opposite = $opposite + 1;
+                } else {
+                    $equal = $equal + 1;
+                }
+            }
+            if ($opposite >= $equal) {
+                if ($this->result->getLastChoiceFor($this->mySide) === parent::foeChoice()) {
+                    return parent::friendChoice();
+                } else {
+                    return parent::foeChoice();
+                }
+            } else {
+                if ($this->result->getLastChoiceFor($this->mySide) === parent::foeChoice()) {
+                    return parent::foeChoice();
+                } else {
+                    return parent::friendChoice();
+                }
+            }
+        }
+        //var_dump(sizeof($myChoice));
+        //var_dump($opponentChoice);
     }
  
 };
