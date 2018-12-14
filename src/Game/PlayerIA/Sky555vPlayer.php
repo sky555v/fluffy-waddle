@@ -75,11 +75,7 @@ class Sky555vPlayer extends Player
                     return parent::foeChoice();
                 }
             } else {
-                if ($this->result->getLastChoiceFor($this->mySide) === parent::foeChoice()) {
-                    return parent::foeChoice();
-                } else {
-                    return parent::friendChoice();
-                }
+                return parent::foeChoice();
             }
         }
     }
