@@ -63,7 +63,7 @@ class Sky555vPlayer extends Player
         if (in_array($name, $dream_team)) {
             return parent::friendChoice();
         } else if (sizeof($myChoice) === 0) {
-            return parent::friendChoice();
+            return parent::foeChoice();
         } else if (sizeof($myChoice) === 1) {
             return parent::friendChoice();
         } else {
