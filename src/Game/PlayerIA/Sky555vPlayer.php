@@ -50,10 +50,8 @@ class Sky555vPlayer extends Player
         $opposite = 0;
         $equal = 0;
         if (sizeof($myChoice) === 0 || sizeof($myChoice) === 1) {
-            return parent::friendChoice();
-        } /*else if (sizeof($myChoice) === 1) {
             return parent::foeChoice();
-        }*/ else {
+        } else {
             for ($i = 0; $i < sizeof($myChoice) - 1; $i++) {
                 if ($myChoice[$i] != $opponentChoice[$i+1]) {
                     $opposite = $opposite + 1;
@@ -75,8 +73,5 @@ class Sky555vPlayer extends Player
                 }
             }
         }
-        //var_dump(sizeof($myChoice));
-        //var_dump($opponentChoice);
     }
- 
 };
